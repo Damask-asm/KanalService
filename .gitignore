@@ -2,3 +2,7 @@ credentials.json
 venv/
 /.idea
 /app/app_logs.log
+
+app/__pycache__/
+settings/__pycache__/
+web_app/backend/__pycache__/
