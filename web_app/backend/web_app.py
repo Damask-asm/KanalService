@@ -1,9 +1,9 @@
+import flask
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
 from models import Order
 
-from settings import SETTINGS
+from app import SETTINGS
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = f'{SETTINGS.DATABASE["drivername"]}' \
@@ -12,7 +12,6 @@ app.config["SQLALCHEMY_DATABASE_URI"] = f'{SETTINGS.DATABASE["drivername"]}' \
                                         f'@{SETTINGS.DATABASE["host"]}' \
                                         f'/{SETTINGS.DATABASE["database"]}'
 db = SQLAlchemy(app)
-CORS(app)
 
 
 def format_order(order: Order) -> dict:
@@ -23,20 +22,22 @@ def format_order(order: Order) -> dict:
     """
     return {
         'ordernumber': order.ordernumber,
-        'costdollar': order.costdollar,
-        'costruble': order.costruble,
-        'deliverytime': order.deliverytime,
+        'costdollar': int(order.costdollar),
+        'costruble': int(order.costruble),
+        'deliverytime': order.deliverytime.strftime("%d, %m, %Y"),
     }
 
 
 # Вернёт все существующие записи Order в БД
-@app.route("/orders", methods=["POST"])
+@app.route("/", methods=["GET"])
 def get_orders():
-    orders = db.session.query(Order).all()
+    # Заказы, отсортированные по дате
+    orders = db.session.query(Order).order_by(Order.deliverytime.desc()).all()
     order_list = []
     for order in orders:
         order_list.append(format_order(order))
-    return {'count': len(order_list), 'orders': order_list}
+    print(order_list)
+    return flask.render_template('index.html', context={'count': len(order_list), 'orders': order_list})
 
 
 if __name__ == "__main__":

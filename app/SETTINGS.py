@@ -1,6 +1,6 @@
 # Перед редактированием изучите README.md
 # Путь до файла credentials.json
-CREDENTIALS_PATH = r'C:\Users\Andrew\PycharmProjects\KanalService\credentials.json'
+CREDENTIALS_PATH = r'..\credentials.json'
 
 # ID Google Таблицы из ссылки
 SPREADSHEET_ID = '1ZpHfkJAd4wtc2Gwby0V4VSzEWPCpJhm9_JEUh68CAac'
@@ -28,8 +28,8 @@ DOLLAR_CURRENCY = 60
 
 # # # Настройки бота # # #
 # Токен вашего бота, можно получить у https://t.me/BotFather
-TELEGRAM_BOT_TOKEN = "2125766815:AAGdpiz-WAKAxLlhO24oKde_YOfqyK8jVRg"
+TELEGRAM_BOT_TOKEN = "2125766810:AAGdpiz-WAKAxLlhO24oKqr_YOfqyK8jVRg"
 
 # https://t.me/getmyid_bot - написав этому боту
 # можно узнать id своего профиля
-TELEGRAM_USER_IDS = ["835555359", "471677692"]  # ID чатов, куда будут направляться оповещения
+TELEGRAM_USER_IDS = ["835655349", "471077694"]  # ID чатов, куда будут направляться оповещения
