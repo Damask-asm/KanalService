@@ -35,7 +35,7 @@ class Order(DeclarativeBase):
 def main():
     # Получаем курс доллара, если не удалось - берём
     # значение по умолчанию из файла настроек
-
+    data = None  # Переменная для хранения данных Google таблицы
     dollar_rate = get_dollar_rate()
     if not dollar_rate:
         dollar_rate = float(SETTINGS.DOLLAR_CURRENCY)

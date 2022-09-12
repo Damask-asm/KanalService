@@ -24,7 +24,7 @@ def format_order(order: Order) -> dict:
         'ordernumber': order.ordernumber,
         'costdollar': int(order.costdollar),
         'costruble': int(order.costruble),
-        'deliverytime': order.deliverytime.strftime("%d, %m, %Y"),
+        'deliverytime': order.deliverytime.strftime("%d/%m/%Y"),
     }
 
 
@@ -41,4 +41,4 @@ def get_orders():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(SETTINGS.FLASK_HOST, SETTINGS.FLASK_PORT, SETTINGS.FLASK_DEBUG_MODE)

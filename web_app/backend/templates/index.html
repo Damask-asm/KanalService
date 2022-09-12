@@ -17,7 +17,13 @@
           title: 'КаналСервис',
           hAxis: {title: 'Дата', minValue: 0, maxValue: 15},
           vAxis: {title: 'Цена $', minValue: 0, maxValue: 15},
-          legend: 'none'
+          legend: 'none',
+          series: {
+            0: {
+                // connect the points in Y1 with a line
+                lineWidth: 1
+            }
+        }
         };
 
         var chart = new google.visualization.ScatterChart(document.getElementById('data_div'));
